@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>24H Finance | 03.10 · 油价开始相信了。市场还没就位。</title>
+<meta name="description" content="全球宏观信号简报 · Global Macro Signal Brief · Signal, Not Noise">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Mono:wght@300;400&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:   #07080a;
+  --gold:  #c9a84c;
+  --gold2: #8a6820;
+  --paper: #ede8dc;
+  --muted: #7a7268;
+  --dim:   #1e1c18;
+  --rule:  #2a2820;
+  --red:   #8b2020;
+  --green: #1e5c3a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'DM Mono', monospace;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── TOP BAR ── */
+.top-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--gold2), var(--gold), var(--gold2));
+  width: 100%;
+}
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 36px 0 0;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0;
+}
+
+.brief-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: clamp(38px, 8vw, 58px);
+  color: var(--paper);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 14px;
+}
+
+.headline {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: clamp(15px, 3vw, 19px);
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.tagline {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  padding-bottom: 28px;
+}
+
+/* ── PHIL QUOTE ── */
+.phil-quote {
+  text-align: center;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  margin: 0;
+}
+
+.phil-quote p {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--gold);
+  line-height: 1.9;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── SECTION HEADER ── */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 28px 0 10px;
+  border-bottom: 1px solid var(--gold);
+  margin-bottom: 0;
+}
+
+.section-header .en {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.section-header .zh {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 10px;
+  color: var(--gold2);
+}
+
+/* ── SNAPSHOT TABLE ── */
+.snapshot {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 6px;
+}
+
+.snapshot tr {
+  border-bottom: 1px solid var(--rule);
+}
+.snapshot tr:last-child { border-bottom: none; }
+
+.snapshot td {
+  padding: 9px 6px;
+  font-size: 12px;
+  vertical-align: middle;
+}
+
+.snap-label {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  color: var(--muted);
+  width: 18%;
+  white-space: nowrap;
+}
+
+.snap-value {
+  font-family: 'DM Mono', monospace;
+  font-weight: 400;
+  color: var(--gold);
+  font-size: 14px;
+  width: 14%;
+}
+
+.snap-change {
+  color: var(--paper);
+  font-size: 11px;
+  width: 12%;
+}
+
+.snap-right {
+  border-left: 1px solid var(--rule);
+  padding-left: 12px !important;
+}
+
+.snap-note {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 10px;
+  color: var(--muted);
+  margin: 6px 0 18px;
+  line-height: 1.7;
+}
+
+/* ── TWO COLUMN ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.col {
+  padding-right: 28px;
+}
+.col + .col {
+  padding-left: 24px;
+  padding-right: 0;
+  border-left: 1px solid var(--rule);
+}
+
+.col-header {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 16px;
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+}
+
+.col-header .zh-label {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 10px;
+  color: var(--gold2);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ── SIGNAL ── */
+.signal {
+  margin-bottom: 18px;
+}
+
+.signal-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 12px;
+  color: var(--gold);
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+
+.signal-body {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--paper);
+  line-height: 1.75;
+}
+
+/* ── JUDGMENT ── */
+.judgment-body {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--paper);
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.james-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+
+.james-text {
+  font-family: 'Noto Serif SC', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--gold);
+  line-height: 1.8;
+}
+
+/* ── ALLOC ── */
+.alloc-item {
+  margin-bottom: 14px;
+}
+
+.alloc-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.alloc-body {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--paper);
+  line-height: 1.7;
+}
+
+/* ── QUESTION ── */
+.question-block {
+  text-align: center;
+  padding: 36px 0 28px;
+  border-top: 1px solid var(--rule);
+  margin-top: 36px;
+}
+
+.question-intro {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  margin-bottom: 14px;
+}
+
+.question-text {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 400;
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: var(--paper);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── SIGNATURE ── */
+.signature-block {
+  text-align: center;
+  padding: 32px 0 48px;
+  border-top: 1px solid var(--rule);
+}
+
+.sig-lines {
+  font-family: 'Noto Serif SC', serif;
+  font-weight: 300;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 2;
+  margin-bottom: 18px;
+}
+
+.sig-name {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.sig-team {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+}
+
+/* ── LANG TOGGLE ── */
+.lang-toggle {
+  display: flex;
+  gap: 6px;
+}
+
+.lang-btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 5px 10px;
+  border: 1px solid var(--rule);
+  background: var(--ink);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lang-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ── DIVIDER ── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 0;
+}
+
+/* ── FADE IN ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.container > * {
+  animation: fadeUp 0.6s ease both;
+}
+.container > *:nth-child(1) { animation-delay: 0.05s; }
+.container > *:nth-child(2) { animation-delay: 0.12s; }
+.container > *:nth-child(3) { animation-delay: 0.18s; }
+.container > *:nth-child(4) { animation-delay: 0.24s; }
+.container > *:nth-child(5) { animation-delay: 0.30s; }
+.container > *:nth-child(6) { animation-delay: 0.36s; }
+.container > *:nth-child(7) { animation-delay: 0.42s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .two-col { grid-template-columns: 1fr; }
+  .col + .col {
+    border-left: none;
+    border-top: 1px solid var(--rule);
+    padding-left: 0;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  .col { padding-right: 0; }
+  .snapshot td { font-size: 11px; }
+  .snap-value { font-size: 12px; }
+}
+
+/* ── CONTENT VISIBILITY ── */
+[data-lang] { display: none; }
+[data-lang].active { display: block; }
+.two-col[data-lang] { display: none; }
+.two-col[data-lang].active { display: grid; }
+</style>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="brief-label">
+      <span>GLOBAL MACRO SIGNAL BRIEF · AEDT</span>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <span data-lang="zh" class="active">2026年3月11日</span>
+        <span data-lang="en">March 11, 2026</span>
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('zh')" id="btn-zh">中文</button>
+          <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+        </div>
+      </div>
+    </div>
+    <div class="brand">24H Finance</div>
+    <div class="headline" data-lang="zh" class="active">
+      油价开始相信了。<br>市场还没就位。
+    </div>
+    <div class="headline" data-lang="en">
+      Oil Started to Believe.<br>Markets Have Not Settled Yet.
+    </div>
+    <div class="tagline">Melbourne AEDT · US Tuesday Close · Signal, Not Noise</div>
+  </header>
+
+  <!-- PHIL QUOTE -->
+  <div class="phil-quote">
+    <p data-lang="zh" class="active">「一个情报能让市场反弹。但只有现实能让市场留下来。」</p>
+    <p data-lang="en">"A headline can make a market bounce.<br>Only reality makes it stay."</p>
+  </div>
+
+  <!-- MARKET SNAPSHOT -->
+  <div class="section-header">
+    <span class="en">MARKET SNAPSHOT</span>
+    <span class="zh" data-lang="zh" style="display:inline;">市场快照 · 3月10日（周二）美东收盘</span>
+    <span class="zh" data-lang="en" style="display:none;">Tuesday March 10, US Close</span>
+  </div>
+
+  <table class="snapshot">
+    <tr>
+      <td class="snap-label" data-lang="zh" class="active">标普500</td>
+      <td class="snap-label" data-lang="en">S&amp;P 500</td>
+      <td class="snap-value">6,796</td>
+      <td class="snap-change">+0.83%</td>
+      <td class="snap-label snap-right" data-lang="zh" class="active">布伦特</td>
+      <td class="snap-label snap-right" data-lang="en">Brent</td>
+      <td class="snap-value">$101</td>
+      <td class="snap-change" data-lang="zh" class="active">盘高$119.50</td>
+      <td class="snap-change" data-lang="en">High $119.50</td>
+    </tr>
+    <tr>
+      <td class="snap-label" data-lang="zh" class="active">纳斯达克</td>
+      <td class="snap-label" data-lang="en">Nasdaq</td>
+      <td class="snap-value">22,696</td>
+      <td class="snap-change">+1.38%</td>
+      <td class="snap-label snap-right">WTI</td>
+      <td class="snap-label" data-lang="en" style="display:none;"></td>
+      <td class="snap-value">$87</td>
+      <td class="snap-change" data-lang="zh" class="active">盘后回落</td>
+      <td class="snap-change" data-lang="en">Post-close drop</td>
+    </tr>
+    <tr>
+      <td class="snap-label" data-lang="zh" class="active">道琼斯</td>
+      <td class="snap-label" data-lang="en">Dow</td>
+      <td class="snap-value">47,741</td>
+      <td class="snap-change">+0.50%</td>
+      <td class="snap-label snap-right" data-lang="zh" class="active">黄金</td>
+      <td class="snap-label snap-right" data-lang="en">Gold</td>
+      <td class="snap-value">$5,139</td>
+      <td class="snap-change">+0.3%</td>
+    </tr>
+    <tr>
+      <td class="snap-label" data-lang="zh" class="active">美债10Y</td>
+      <td class="snap-label" data-lang="en">US 10Y</td>
+      <td class="snap-value">4.15%</td>
+      <td class="snap-change">+14bps</td>
+      <td class="snap-label snap-right">DXY</td>
+      <td class="snap-label" data-lang="en" style="display:none;"></td>
+      <td class="snap-value">99.69</td>
+      <td class="snap-change" data-lang="zh" class="active">三月高位</td>
+      <td class="snap-change" data-lang="en">3-mo high</td>
+    </tr>
+    <tr>
+      <td class="snap-label">ASX 200</td>
+      <td class="snap-label" data-lang="en" style="display:none;"></td>
+      <td class="snap-value snap-note-val">强势开盘</td>
+      <td class="snap-change" data-lang="zh" class="active">跟涨美股</td>
+      <td class="snap-label snap-right" data-lang="zh" class="active">比特币</td>
+      <td class="snap-label snap-right" data-lang="en">Bitcoin</td>
+      <td class="snap-value">$69K</td>
+      <td class="snap-change">+2%</td>
+    </tr>
+    <tr>
+      <td class="snap-label" data-lang="zh" class="active">恒生指数</td>
+      <td class="snap-label" data-lang="en">Hang Seng</td>
+      <td class="snap-value">26,488</td>
+      <td class="snap-change">-0.3%</td>
+      <td class="snap-label snap-right" data-lang="zh" class="active">人民币</td>
+      <td class="snap-label snap-right" data-lang="en">CNY/USD</td>
+      <td class="snap-value">7.24</td>
+      <td class="snap-change" data-lang="zh" class="active">承压</td>
+      <td class="snap-change" data-lang="en">under pressure</td>
+    </tr>
+  </table>
+
+  <p class="snap-note" data-lang="zh" class="active">特朗普"战争基本结束"令油价大跌，WTI盘后一度跌至$87。科技连续第二天领涨，但布伦特与WTI价差再次拉大——市场买入了希望，没有买入通道重开的事实。</p>
+  <p class="snap-note" data-lang="en">Trump's remarks sent oil sharply lower. Tech led gains for a second day. But the Brent-WTI spread widened again — markets are still pricing transit risk, not just headline risk.</p>
+
+  <!-- SIGNALS -->
+  <div class="section-header">
+    <span class="en">SIGNALS</span>
+  </div>
+
+  <!-- ZH SIGNALS -->
+  <div class="two-col" data-lang="zh" class="active">
+    <div class="col">
+      <div class="col-header">WORLD SIGNALS <span class="zh-label">世界信号</span></div>
+      <div class="signal">
+        <div class="signal-title">① 宏观：油价回落，价差没有</div>
+        <div class="signal-body">特朗普CBS连线说"战争基本完成"，WTI盘内一度跌至$87，但布伦特与WTI价差重新拉开至$14+，表明全球运贾风险仍未解除。计价在现实间，不在推文中。</div>
+      </div>
+      <div class="signal">
+        <div class="signal-title">② 通胀：CPI周三公布，美联储没有好答案</div>
+        <div class="signal-body">3月11日公布美国2月CPI。油价输入性通胀已在路上，美联储面临"通胀高+增长弱"的滞胀考验。降息窗口最早推至三季度，市场预期快速重定价。</div>
+      </div>
+      <div class="signal">
+        <div class="signal-title">③ 地缘：停火不等于通道重开</div>
+        <div class="signal-body">高盛报告指出，停火不等于运输恢复。海险保费仍高，油轮运营商等待物理通道确认，而非政治声明。这不是结束，这是间歇。</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="col-header">CHINA SIGNALS <span class="zh-label">中国信号</span></div>
+      <div class="signal">
+        <div class="signal-title">① 政策：能源安全写入五年规划语言</div>
+        <div class="signal-body">两会闭幕用语变化："扩大战略石油储备"、"推进核电应急体系建设"进入五年规划级别。第一次将地缘能源风险明确命名。政策窗口已经开启。</div>
+      </div>
+      <div class="signal">
+        <div class="signal-title">② 市场：A股韧性第三天，北向净流入坐实</div>
+        <div class="signal-body">三大指数小幅整理，成交量高位维持。北向资金连续第三日净流入，能源、军工保持领涨。国内资金开始定价这条主线，外资在评估第二步。</div>
+      </div>
+      <div class="signal">
+        <div class="signal-title">③ 经济：输入性通胀延迟4-8周，3月CPI才是真实测试</div>
+        <div class="signal-body">当前2月CPI样本仍有春节余温。山东、广东物流成本上涨已显现。3月12日CPI才是真正传导节点。调整窗口在数据公布之后。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EN SIGNALS -->
+  <div class="two-col" data-lang="en">
+    <div class="col">
+      <div class="col-header">WORLD SIGNALS</div>
+      <div class="signal">
+        <div class="signal-title">① Macro: G7 Spoke. The Strait Did Not Listen.</div>
+        <div class="signal-body">G7 declared readiness to act but released no reserves. Brent hit $119.50 intraday, closed at $101. Markets chose a Truth Social post over a G7 communique. Painkiller, not surgery.</div>
+      </div>
+      <div class="signal">
+        <div class="signal-title">② Price: Gold Down, Dollar Up — Unusual Divergence</div>
+        <div class="signal-body">Gold fell 2.5% to $5,042. DXY rose to 99.69, a 3-month high. 10Y yield at 4.15%. Inflation expectations rising while gold falls — historically, this divergence does not hold.</div>
+      </div>
+      <div class="signal">
+        <div class="signal-title">③ Geopolitical: "Nearly Over" — Markets Bought Half of It</div>
+        <div class="signal-body">Trump signaled the campaign was nearing completion and the Strait was reopening. Tech rallied. But oil held above $100. Markets bought the hope. Not the resolution.</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="col-header">CHINA SIGNALS</div>
+      <div class="signal">
+        <div class="signal-title">① Policy: Energy Security Enters NPC Agenda</div>
+        <div class="signal-body">75% of China oil imports transit the Strait. Supply chain risk is direct. Reserve release discussions intensifying. Official tone remains measured — the action window is opening.</div>
+      </div>
+      <div class="signal">
+        <div class="signal-title">② Market: Energy and Defense Lead, Northbound Waits</div>
+        <div class="signal-body">A-share energy and defense outperformed. Hang Seng Tech fell deeper than the index. Northbound flow net negative but no panic — capital is waiting for a signal, not running.</div>
+      </div>
+      <div class="signal">
+        <div class="signal-title">③ Economy: CPI 3-Year High, Rate Cut Window Narrowing</div>
+        <div class="signal-body">February CPI +1.3% YoY, a 3-year high. PPI still negative — industrial deflation unresolved. Sustained oil above $100 will compress the PBOC rate-cut window. The bind is tightening.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JUDGMENT + ALLOCATION -->
+  <div class="section-header" style="margin-top: 28px;">
+    <span class="en">JUDGMENT + ALLOCATION</span>
+    <span class="zh" data-lang="zh" style="display:inline;">判断 / 配置</span>
+  </div>
+
+  <div class="two-col" data-lang="zh" class="active" style="margin-top:20px;">
+    <div class="col">
+      <div class="col-header">ONE JUDGMENT <span class="zh-label">一句判断</span></div>
+      <p class="judgment-body">油价从$119跌回$87，但布伦特与WTI价差重新拉开。这一个细节，最为关键。</p>
+      <div class="james-label">JAMES 的判断</div>
+      <p class="james-text">市场买入了停火的希望，但还没有买入通道重开的事实。把这两件事混淆的投资者，会在下一次工业数据或CPI中频繁碰壁。</p>
+    </div>
+    <div class="col">
+      <div class="col-header">ALLOCATION WATCH <span class="zh-label">配置观察</span></div>
+      <div class="alloc-item">
+        <div class="alloc-label">① 新质生产力</div>
+        <div class="alloc-body">核电、储能、LNG基础设施持续受能源安全叙事支撑。军工板块随地缘热度上行，需区分情绪与实际订单。</div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-label">② 反内卷行业</div>
+        <div class="alloc-body">能源成本上行对高耗能行业是压力，对已完成整合的头部企业是筛选机制。关注化工、钢铁中能源自给率高的标的。</div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-label">③ 内需消费</div>
+        <div class="alloc-body">油价传导至CPI需4-8周，当前数据仍有春节余温。真实压力在3-4月数据中显现。现在观望，不是逃跑。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two-col" data-lang="en" style="margin-top:20px;">
+    <div class="col">
+      <div class="col-header">ONE JUDGMENT</div>
+      <p class="judgment-body">Oil fell from $119 to $87. But the Brent-WTI spread widened again. That one detail matters most.</p>
+      <div class="james-label">JAMES'S JUDGMENT</div>
+      <p class="james-text">Markets bought the hope of a ceasefire. They have not yet bought the fact of an open strait. Investors who confuse the two will hit a wall at the next industrial data print or CPI number.</p>
+    </div>
+    <div class="col">
+      <div class="col-header">ALLOCATION WATCH</div>
+      <div class="alloc-item">
+        <div class="alloc-label">① New Productive Forces</div>
+        <div class="alloc-body">Nuclear, storage, and LNG infrastructure remain supported by the energy security narrative. Defense names rising on geopolitical heat — separate sentiment from actual order books.</div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-label">② Anti-Involution Sectors</div>
+        <div class="alloc-body">Rising energy costs pressure high-consumption industries. For consolidating leaders with own energy supply, this is a selection filter. Watch energy self-sufficiency ratios in chemicals and steel.</div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-label">③ Domestic Consumption</div>
+        <div class="alloc-body">Oil-to-CPI takes 4-8 weeks. Current prints still carry CNY warmth. Real pressure shows in March-April data. Watch, not exit.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUESTION -->
+  <div class="question-block">
+    <div class="question-intro" data-lang="zh" class="active">今天留一个问题——</div>
+    <div class="question-intro" data-lang="en">TODAY'S QUESTION</div>
+    <p class="question-text" data-lang="zh" class="active">沿海山东省和广东省的北方买家已经在感受成本。<br>哪个上游行业会第一个转嫁出去？</p>
+    <p class="question-text" data-lang="en">Shandong and Guangdong buyers are already feeling the cost.<br>Which upstream sector passes it on first?</p>
+  </div>
+
+  <!-- SIGNATURE -->
+  <div class="signature-block">
+    <div class="sig-lines" data-lang="zh" class="active">
+      世界不会停止变化。<br>
+      市场不会停止波动。<br>
+      但判断，可以慢一点。
+    </div>
+    <div class="sig-lines" data-lang="en">
+      The world won't stop changing.<br>
+      Markets won't stop reacting.<br>
+      But judgment can be slower.
+    </div>
+    <div class="sig-name">— James Xu</div>
+    <div class="sig-team">24H FINANCE RESEARCH TEAM · MELBOURNE · NEW YORK · HONG KONG</div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+function setLang(lang) {
+  // Update buttons
+  document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+
+  // Show/hide all data-lang elements
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    if (el.dataset.lang === lang) {
+      el.classList.add('active');
+      // restore correct display type
+      if (el.classList.contains('two-col')) {
+        el.style.display = 'grid';
+      } else {
+        el.style.display = '';
+      }
+    } else {
+      el.classList.remove('active');
+      el.style.display = 'none';
+    }
+  });
+}
+
+// Init: show zh, hide en
+setLang('zh');
+</script>
+</body>
+</html>
