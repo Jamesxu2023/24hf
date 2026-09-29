@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>24H Finance 工厂</title>
+<meta name="description" content="把事实收成一条。只有詹姆斯。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/24hf/factory.css">
+</head>
+<body>
+<div class="bar"></div>
+<header class="top">
+  <div>
+    <p class="mark">24H FINANCE</p>
+    <h1>工厂</h1>
+  </div>
+  <a href="/">回东西两说</a>
+</header>
+<p class="creed">世界不会停止变化。市场不会停止波动。但判断，可以慢一点。</p>
+
+<form class="sheet" id="sheet">
+  <label>材料
+    <textarea id="material" rows="8" placeholder="贴事实，和你的判断。最后一句当判断。稿子若已写好，用「詹姆斯：」。"></textarea>
+  </label>
+  <div class="fields">
+    <label>期数<input id="number" inputmode="numeric" placeholder="—" autocomplete="off"></label>
+    <label>标题<input id="title" placeholder="这期叫什么" autocomplete="off"></label>
+    <label>引子<input id="subtitle" placeholder="一句就行" autocomplete="off"></label>
+  </div>
+  <div class="actions">
+    <button type="button" id="cut" class="primary">切稿</button>
+    <button type="button" id="record" class="solid">录成整条</button>
+    <p id="status" class="status" role="status"></p>
+  </div>
+  <p class="help">这个工厂只有詹姆斯。句子用你的。</p>
+</form>
+
+<section class="work" id="work" hidden>
+  <div class="work-head">
+    <h2 id="work-title"></h2>
+    <div class="work-actions">
+      <button type="button" id="download-audio" disabled>下载整条</button>
+      <button type="button" id="download-cover">下载封面</button>
+    </div>
+  </div>
+  <div class="work-grid">
+    <div>
+      <div id="script" class="script"></div>
+      <button type="button" id="add-line" class="add">加一句</button>
+    </div>
+    <aside>
+      <div id="cover" class="cover" aria-label="封面"></div>
+      <audio id="player" controls></audio>
+    </aside>
+  </div>
+</section>
+
+<section class="voice-block">
+  <h2>詹姆斯</h2>
+  <p id="voice-note"></p>
+  <div class="sliders">
+    <label>语速 <span id="rate-label"></span><input id="rate" type="range" min="-24" max="8" step="1"></label>
+    <label>音高 <span id="pitch-label"></span><input id="pitch" type="range" min="-8" max="4" step="1"></label>
+  </div>
+  <button type="button" id="sample">听一句</button>
+</section>
+
+<section class="library">
+  <div class="library-head">
+    <h2>留下的稿</h2>
+    <div>
+      <button type="button" id="export">导出</button>
+      <button type="button" id="import">导入</button>
+      <input id="import-file" type="file" accept="application/json" hidden>
+    </div>
+  </div>
+  <div id="library" class="library-list"></div>
+</section>
+
+<p id="error" class="error" role="alert" hidden></p>
+<script type="module" src="/24hf/factory.js"></script>
+</body>
+</html>

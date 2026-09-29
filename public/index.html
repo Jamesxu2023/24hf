@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>播客台 · 东西两说</title>
+<meta name="description" content="把材料收成一期口播：两个人各站一岸，录下来，接成一条。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700&family=Noto+Serif+SC:wght@600;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/studio.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><b>播客台</b><i></i><span>东西两说</span></div>
+  <a class="elsewhere" href="/24hf/">24H Finance 另开工厂</a>
+  <div class="meta" id="meta">还没有成品</div>
+</header>
+
+<section class="desk">
+  <div class="desk-copy">
+    <p class="eyebrow">两个人，各站一岸</p>
+    <h1>把材料收成一期。</h1>
+    <ol class="model">
+      <li><b>开场</b>事实先落地</li>
+      <li><b>老麦</b>对着数字说</li>
+      <li><b>林晚</b>看另一岸，先别鼓掌</li>
+      <li><b>交叉</b>短。冷刀把两截并上</li>
+    </ol>
+  </div>
+  <form class="sheet" id="sheet">
+    <label>材料
+      <textarea id="material" rows="8" placeholder="贴新闻、笔记，或你的判断。哪句别讲，直接写在里面。稿子若已写好，人名可以单独一行，也可以写成「詹姆斯：」。"></textarea>
+    </label>
+    <div class="fields">
+      <label>节目<input id="program" value="东西两说" autocomplete="off"></label>
+      <label>期数<input id="number" inputmode="numeric" placeholder="—" autocomplete="off"></label>
+      <label class="wide">标题<input id="title" placeholder="这期叫什么" autocomplete="off"></label>
+      <label class="wide">引子<input id="subtitle" placeholder="一句就行" autocomplete="off"></label>
+    </div>
+    <div class="actions">
+      <button type="button" id="cut" class="primary">切稿</button>
+      <button type="button" id="record" class="solid">录成整期</button>
+      <p id="status" class="status" role="status"></p>
+    </div>
+    <p class="help">句子用你的。这里只切开、分岸、出声、接起来。材料不够撑长，就不注水。</p>
+  </form>
+</section>
+
+<section class="work" id="work" hidden>
+  <div class="work-head">
+    <div>
+      <p class="eyebrow">这一期</p>
+      <h2 id="work-title"></h2>
+    </div>
+    <div class="work-actions">
+      <button type="button" id="download-audio" disabled>下载整期</button>
+      <button type="button" id="download-cover">下载封面</button>
+    </div>
+  </div>
+  <div class="work-grid">
+    <div>
+      <div id="script" class="script"></div>
+      <button type="button" id="add-line" class="add">加一句</button>
+    </div>
+    <aside class="side">
+      <div id="cover" class="cover" aria-label="封面"></div>
+      <label class="theme">封面
+        <select id="theme">
+          <option value="strait">海峡蓝</option>
+          <option value="breaking">新闻红</option>
+          <option value="midnight">午夜金</option>
+          <option value="paper">纸上黑</option>
+        </select>
+      </label>
+      <audio id="player" controls></audio>
+    </aside>
+  </div>
+</section>
+
+<section class="cast">
+  <div class="cast-head">
+    <h2>三个人</h2>
+    <p>语速正常，不压嗓。要再干一点，把音高留在零附近。</p>
+  </div>
+  <div class="voices" id="voices"></div>
+</section>
+
+<section class="library">
+  <div class="library-head">
+    <h2>留下的稿</h2>
+    <div>
+      <button type="button" id="export">导出</button>
+      <button type="button" id="import">导入</button>
+      <input id="import-file" type="file" accept="application/json" hidden>
+    </div>
+  </div>
+  <div id="library" class="library-list"></div>
+  <p class="help">稿存在这台浏览器里。音频不存，要留就下载。</p>
+</section>
+
+<p id="error" class="error" role="alert" hidden></p>
+<script type="module" src="/studio.js"></script>
+</body>
+</html>

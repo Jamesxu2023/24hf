@@ -1,0 +1,152 @@
+:root {
+  --ink: #11120f;
+  --paper: #eee8da;
+  --paper-2: #d9d1bf;
+  --orange: #ff5a23;
+  --acid: #dbe744;
+  --blue: #9bb7bd;
+  --line: rgba(17, 18, 15, 0.22);
+  color: var(--ink);
+  background: var(--ink);
+  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: 0.55; }
+h1, h2 { font-family: "Noto Serif SC", "Songti SC", serif; font-weight: 900; letter-spacing: -0.04em; margin: 0; }
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+  padding: 0 4vw;
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+}
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.12em; font-size: 13px; }
+.brand b { background: var(--ink); color: var(--paper); padding: 7px 9px; }
+.brand i { width: 28px; height: 1px; background: var(--ink); }
+.meta { font-size: 13px; }
+.elsewhere { color: inherit; font-size: 13px; font-weight: 700; }
+
+.desk {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6vw;
+  padding: 56px 4vw;
+  background: var(--acid);
+  border-bottom: 1px solid var(--ink);
+}
+.eyebrow { margin: 0 0 14px; font: 800 11px/1.4 ui-monospace, Consolas, monospace; letter-spacing: 0.16em; }
+.desk-copy h1 { font-size: clamp(48px, 6vw, 84px); line-height: 0.95; max-width: 6em; }
+.model { list-style: none; padding: 0; margin: 28px 0 0; }
+.model li { padding: 8px 0; border-top: 1px solid var(--ink); font-size: 15px; }
+.model b { display: inline-block; width: 4.5em; }
+
+.sheet { background: var(--paper); border: 1px solid var(--ink); box-shadow: 8px 8px 0 var(--ink); padding: 22px; }
+.sheet label, .theme { display: block; font: 800 11px/1.4 ui-monospace, Consolas, monospace; letter-spacing: 0.08em; }
+textarea, input, select {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid var(--ink);
+  background: rgba(255, 255, 255, 0.55);
+  padding: 10px 12px;
+}
+textarea { min-height: 180px; resize: vertical; font: 16px/1.75 "Noto Serif SC", serif; }
+.fields { display: grid; grid-template-columns: 1.2fr 0.6fr 1.4fr 1.4fr; gap: 10px; margin-top: 12px; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+.primary, .solid, .work-actions button, .add, .library button, .line button, .voices button {
+  border: 1px solid var(--ink);
+  background: transparent;
+  padding: 12px 16px;
+  font-weight: 800;
+}
+.primary { background: var(--orange); box-shadow: 4px 4px 0 var(--ink); }
+.solid { background: var(--ink); color: var(--paper); }
+.status { margin: 0; font-weight: 700; font-size: 13px; }
+.help { margin: 12px 0 0; font-size: 13px; line-height: 1.6; }
+
+.work { background: var(--paper); padding: 48px 4vw 64px; border-bottom: 1px solid var(--ink); }
+.work-head, .cast-head, .library-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; }
+.work-head h2, .cast h2, .library h2 { font-size: clamp(32px, 4vw, 56px); }
+.work-actions { display: flex; gap: 8px; }
+.work-grid { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 28px; margin-top: 24px; }
+.script { border-top: 1px solid var(--ink); }
+.line { display: grid; grid-template-columns: 148px 1fr auto; gap: 12px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.line-meta { display: grid; gap: 6px; }
+.line textarea { min-height: 72px; background: transparent; }
+.line-actions { display: grid; gap: 6px; align-content: start; }
+.line button { padding: 8px 10px; font-size: 12px; }
+.add { margin-top: 14px; background: var(--acid); box-shadow: 3px 3px 0 var(--ink); }
+.side audio { width: 100%; margin-top: 12px; }
+.cover {
+  aspect-ratio: 16/9;
+  background: var(--blue);
+  color: var(--paper);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.cover strong { position: relative; font: 900 clamp(28px, 3vw, 48px)/1 "Noto Serif SC", serif; max-width: 11em; }
+.cover span, .cover em { position: relative; font-style: normal; }
+.cover em { align-self: flex-start; background: var(--paper); color: var(--ink); padding: 6px 8px; font: 800 12px ui-monospace, monospace; }
+.cover .num { position: absolute; right: 16px; top: 16px; font: 900 42px/1 ui-monospace, monospace; color: var(--orange); }
+.theme { margin-top: 12px; }
+
+.cast { background: var(--ink); color: var(--paper); padding: 56px 4vw; }
+.cast p { margin: 8px 0 0; opacity: 0.75; }
+.voices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+.voice { padding: 18px; color: var(--ink); }
+.voice:nth-child(1) { background: var(--paper); }
+.voice:nth-child(2) { background: var(--orange); }
+.voice:nth-child(3) { background: var(--acid); }
+.voice h3 { margin: 0; font: 900 28px "Noto Serif SC", serif; }
+.voice p { margin: 4px 0 12px; }
+.sliders { display: grid; gap: 8px; }
+.sliders label { font-size: 12px; font-weight: 700; }
+.voice button { margin-top: 12px; width: 100%; background: rgba(255,255,255,0.45); }
+
+.library { background: var(--paper-2); padding: 48px 4vw 72px; }
+.library-list { display: flex; gap: 10px; overflow-x: auto; padding: 18px 0; }
+.tab {
+  flex: 0 0 220px;
+  text-align: left;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 104px;
+}
+.tab.active { background: var(--orange); box-shadow: 4px 4px 0 var(--ink); }
+.tab b { font: 900 18px/1.3 "Noto Serif SC", serif; }
+.tab span, .tab small { font: 700 11px ui-monospace, monospace; }
+.error {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  max-width: 360px;
+  background: var(--orange);
+  border: 1px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--ink);
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .desk, .work-grid, .voices, .fields { grid-template-columns: 1fr; }
+  .line { grid-template-columns: 1fr; }
+  .top, .desk, .work, .cast, .library { padding-left: 20px; padding-right: 20px; }
+}
