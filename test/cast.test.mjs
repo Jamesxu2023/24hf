@@ -44,6 +44,17 @@ test("a labeled script is kept as written", () => {
   ]);
 });
 
+test("a finance-shaped note still stays on two shores here", () => {
+  const material = "油价从119掉到87。价差却重新拉开。市场买的是说法，不是通道重开。";
+  const episode = castEpisode({ material, program: "东西两说" });
+  const spoken = episode.segments.map((item) => item.text).join("");
+  assert.match(spoken, /各站一岸/);
+  assert.match(spoken, /老麦|林晚/);
+  assert.doesNotMatch(spoken, /市场不会停止波动/);
+  assert.doesNotMatch(spoken, /这是 24H Finance/);
+  assert.deepEqual(grounded(episode, material), []);
+});
+
 test("two shores stay in the order of the material", () => {
   const material = "油轮保费这个月涨了四成。船东说是因为海峡不安全。保险公司说，危险从六月就写在价目表上了。";
   const episode = castEpisode({ material });

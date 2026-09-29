@@ -34,6 +34,7 @@ h1, h2 { font-family: "Noto Serif SC", "Songti SC", serif; font-weight: 900; let
 .brand b { background: var(--ink); color: var(--paper); padding: 7px 9px; }
 .brand i { width: 28px; height: 1px; background: var(--ink); }
 .meta { font-size: 13px; }
+.elsewhere { color: inherit; font-size: 13px; font-weight: 700; }
 
 .desk {
   display: grid;

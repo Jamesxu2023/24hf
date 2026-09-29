@@ -1,0 +1,105 @@
+:root {
+  --ink: #07080a;
+  --gold: #c9a84c;
+  --paper: #ede8dc;
+  --muted: #7a7268;
+  --rule: #2a2820;
+  color: var(--paper);
+  background: var(--ink);
+  font-family: "Noto Sans SC", "PingFang SC", sans-serif;
+}
+
+* { box-sizing: border-box; }
+body { margin: 0 auto; max-width: 980px; padding: 0 24px 72px; }
+button, input, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: wait; opacity: 0.55; }
+a { color: var(--gold); }
+h1, h2 { font-family: "Noto Serif SC", serif; font-weight: 700; margin: 0; }
+
+.bar { height: 4px; margin: 0 -24px 28px; background: linear-gradient(90deg, #8a6820, var(--gold), #8a6820); }
+.top { display: flex; justify-content: space-between; align-items: end; gap: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 18px; }
+.mark { margin: 0 0 8px; font: 500 11px/1 "DM Mono", ui-monospace, monospace; letter-spacing: 0.22em; color: var(--gold); }
+.top h1 { font-size: 56px; letter-spacing: -0.04em; }
+.creed { margin: 22px 0 28px; color: var(--gold); font: 400 15px/1.9 "Noto Serif SC", serif; }
+
+.sheet, .work, .voice-block, .library { border-top: 1px solid var(--rule); padding-top: 22px; margin-top: 28px; }
+label { display: block; font: 500 11px/1.4 "DM Mono", ui-monospace, monospace; letter-spacing: 0.08em; color: var(--muted); }
+textarea, input {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  border: 1px solid var(--rule);
+  background: #12110e;
+  color: var(--paper);
+  padding: 10px 12px;
+}
+textarea { min-height: 160px; resize: vertical; font: 16px/1.75 "Noto Serif SC", serif; color: var(--paper); }
+.fields { display: grid; grid-template-columns: 0.5fr 1fr 1fr; gap: 12px; margin-top: 12px; }
+.actions, .work-head, .library-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+.work-head, .library-head { justify-content: space-between; margin-top: 0; }
+button, .work-actions button, .add {
+  border: 1px solid var(--gold);
+  background: transparent;
+  color: var(--paper);
+  padding: 10px 14px;
+  font-weight: 700;
+}
+.primary { background: var(--gold); color: var(--ink); }
+.solid { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.status, .help { margin: 0; color: var(--muted); font-size: 13px; }
+.help { margin-top: 12px; }
+.work-grid { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: 22px; margin-top: 18px; }
+.script { border-top: 1px solid var(--rule); }
+.line { display: grid; grid-template-columns: 120px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--rule); }
+.line-meta { display: grid; gap: 6px; }
+.line select, .line textarea { width: 100%; background: transparent; border: 1px solid var(--rule); color: var(--paper); }
+.line textarea { min-height: 72px; }
+.line-actions { display: grid; gap: 6px; align-content: start; }
+.line button { padding: 8px 10px; font-size: 12px; }
+.add { margin-top: 14px; }
+.cover {
+  aspect-ratio: 16/9;
+  background: #12110e;
+  border: 1px solid var(--rule);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cover em { font-style: normal; color: var(--gold); font: 500 11px "DM Mono", monospace; letter-spacing: 0.16em; }
+.cover strong { font: 700 28px/1.15 "Noto Serif SC", serif; }
+.cover span { color: var(--muted); }
+audio { width: 100%; margin-top: 12px; }
+.sliders { display: grid; gap: 10px; max-width: 420px; margin: 14px 0; }
+.sliders label { color: var(--paper); }
+.library-list { display: flex; gap: 10px; overflow-x: auto; padding: 16px 0; }
+.tab {
+  flex: 0 0 220px;
+  text-align: left;
+  border: 1px solid var(--rule);
+  background: #12110e;
+  color: var(--paper);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 96px;
+}
+.tab.active { border-color: var(--gold); }
+.tab b { font: 700 18px/1.3 "Noto Serif SC", serif; }
+.error {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  max-width: 360px;
+  background: #8b2020;
+  color: var(--paper);
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .work-grid, .fields, .line { grid-template-columns: 1fr; }
+  .top h1 { font-size: 40px; }
+}

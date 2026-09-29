@@ -29,9 +29,11 @@ const server = http.createServer(async (req, res) => {
     res.end(Buffer.from(await response.arrayBuffer()));
     return;
   }
-  const requested = url.pathname === "/" ? "/index.html" : decodeURIComponent(url.pathname);
-  const file = path.join(root, requested);
-  if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
+  const requested = decodeURIComponent(url.pathname).replace(/^\/+/, "");
+  const relative = requested === "" || requested.endsWith("/") ? `${requested}index.html` : requested;
+  let file = path.resolve(root, relative);
+  if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");
+  if (!file.startsWith(`${root}${path.sep}`) || !fs.existsSync(file) || fs.statSync(file).isDirectory()) {
     res.writeHead(404, { "content-type": "text/plain; charset=utf-8" });
     res.end("没有这页");
     return;
