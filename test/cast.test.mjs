@@ -33,6 +33,31 @@ test("a short fact is not padded into a long essay", () => {
   assert.deepEqual(grounded(episode, material), []);
 });
 
+test("a script with the name on its own line stays in that order", () => {
+  const material = [
+    "# 澳大利亚人为什么不信AI",
+    "### 《东西两说》三人版",
+    "**詹姆斯：**",
+    "语法错了一个，她反而松了口气。",
+    "**老麦：**",
+    "而且不是不用。",
+    "这个很关键。",
+    "**林晚：**",
+    "这是两回事。",
+  ].join("\n");
+  const episode = castEpisode({ material, program: "东西两说" });
+  assert.equal(episode.mode, "script");
+  assert.equal(episode.title, "澳大利亚人为什么不信AI");
+  assert.deepEqual(episode.segments.map((item) => `${item.speaker}:${item.text}`), [
+    "詹姆斯:语法错了一个，她反而松了口气。",
+    "老麦:而且不是不用。",
+    "老麦:这个很关键。",
+    "林晚:这是两回事。",
+  ]);
+  assert.doesNotMatch(episode.segments.map((item) => item.text).join(""), /各站一岸|先别鼓掌/);
+  assert.deepEqual(grounded(episode, material), []);
+});
+
 test("a labeled script is kept as written", () => {
   const material = ["詹姆斯：今天就这一件。", "老麦：账单上是四成。", "林晚：先别把它说成天气。"].join("\n");
   const episode = castEpisode({ material });

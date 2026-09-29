@@ -391,7 +391,7 @@ function renderScript(episode) {
   renderCover(episode);
   $("script").innerHTML = episode.segments.map((segment, index) => `<article class="line">
     <div class="line-meta">
-      <select data-section="${segment.id}" aria-label="段落">${SECTIONS.map((section) => `<option ${section === segment.section ? "selected" : ""}>${section}</option>`).join("")}</select>
+      <select data-section="${segment.id}" aria-label="段落">${(SECTIONS.includes(segment.section) ? SECTIONS : [segment.section, ...SECTIONS]).map((section) => `<option ${section === segment.section ? "selected" : ""}>${section}</option>`).join("")}</select>
       <select data-speaker="${segment.id}" aria-label="说话人">${SPEAKERS.map((speaker) => `<option ${speaker === segment.speaker ? "selected" : ""}>${speaker}</option>`).join("")}</select>
       <small>${String(index + 1).padStart(2, "0")}</small>
     </div>

@@ -30,7 +30,7 @@ function stripEnd(value) {
 function ensureEnd(value) {
   const text = String(value || "").trim();
   if (!text) return "";
-  return /[。！？]$/u.test(text) ? text : `${text}。`;
+  return /[。！？：:]$/u.test(text) ? text : `${text}。`;
 }
 
 function bare(value) {
@@ -135,24 +135,64 @@ function segment(section, speaker, text, origin) {
   return { section, speaker, text: ensureEnd(text), origin };
 }
 
+function plainLine(line) {
+  return String(line || "")
+    .replace(/\*\*/g, "")
+    .replace(/^#{1,6}\s*/u, "")
+    .trim();
+}
+
+function spokenPieces(text) {
+  const out = [];
+  for (const part of sentences(text)) {
+    if (chars(part) > 300) out.push(...breaths(part));
+    else if (chars(stripEnd(part)) >= 1) out.push(ensureEnd(part));
+  }
+  return out;
+}
+
+function documentTitle(text) {
+  const match = String(text || "").match(/^#\s+(.+)$/mu);
+  if (!match) return "";
+  const title = match[1].replace(/[*#]/g, "").trim();
+  return chars(title) >= 2 && chars(title) <= 28 ? title : "";
+}
+
 function parseLabeled(text) {
-  const lines = String(text || "").split(/\n/u).map((line) => line.trim()).filter(Boolean);
-  const content = lines.filter((line) => !SECTIONS.includes(line));
-  if (content.length < 3) return null;
-  let section = "正文";
   const parsed = [];
-  let hits = 0;
-  for (const line of lines) {
+  let section = "正文";
+  let speaker = "";
+  let turns = 0;
+  let stray = 0;
+  for (const rawLine of String(text || "").split(/\n/u)) {
+    const line = plainLine(rawLine);
+    if (!line || /^[-—*_]{3,}$/u.test(line)) continue;
     if (SECTIONS.includes(line)) {
       section = line;
       continue;
     }
-    const match = line.match(/^(开场|人物|第一轮|交叉|冷刀|结尾)?\s*(詹姆斯|老麦|林晚)\s*[：:]\s*(.+)$/u);
-    if (!match) continue;
-    hits += 1;
-    parsed.push(segment(match[1] || section, match[2], match[3], "script"));
+    const only = line.match(/^(詹姆斯|老麦|林晚)\s*[：:]\s*$/u);
+    if (only) {
+      speaker = only[1];
+      turns += 1;
+      continue;
+    }
+    const inline = line.match(/^(开场|人物|第一轮|交叉|冷刀|结尾)?\s*(詹姆斯|老麦|林晚)\s*[：:]\s*(.+)$/u);
+    if (inline) {
+      if (inline[1]) section = inline[1];
+      speaker = inline[2];
+      turns += 1;
+      for (const piece of spokenPieces(inline[3])) parsed.push(segment(section, speaker, piece, "script"));
+      continue;
+    }
+    if (!speaker) {
+      stray += 1;
+      continue;
+    }
+    for (const piece of spokenPieces(line)) parsed.push(segment(section, speaker, piece, "script"));
   }
-  if (hits < 3 || hits < content.length * 0.6) return null;
+  if (turns < 3 || parsed.length < 3) return null;
+  if (stray > parsed.length) return null;
   return parsed;
 }
 
@@ -215,7 +255,12 @@ export function castEpisode({ material, program } = {}) {
   }
 
   const labeled = parseLabeled(text);
-  if (labeled) return finish(labeled, program, "script", []);
+  if (labeled) {
+    const episode = finish(labeled, program, "script", []);
+    const title = documentTitle(text);
+    if (title) episode.title = title;
+    return episode;
+  }
 
   const { facts, angles, avoid } = parseMaterial(text);
   if (!facts.length && !angles.length && !avoid) {
